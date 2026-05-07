@@ -1,26 +1,325 @@
 @import "tailwindcss";
 
+/* ══════════════════════════════════════════════════════════
+   GEINEL NIÑO A. DUNGAO — Windows 97 Portfolio
+   PALETTE   #008080 (teal) · #C0C0C0 (gray) · #000080 (navy)
+   FONTS     MS Sans Serif · Fixedsys · VT323
+   STYLE     Windows 97 · Retro OS · Classic Desktop
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Windows 97 Color Tokens ────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --win-desktop:     #008080;
+  --win-gray:        #C0C0C0;
+  --win-gray-dark:   #808080;
+  --win-gray-light:  #DFDFDF;
+  --win-white:       #FFFFFF;
+  --win-black:       #000000;
+  --win-blue:        #000080;
+  --win-blue-light:  #0000FF;
+  --win-teal:        #008080;
+  --win-highlight:   #000080;
+  --win-highlight-text: #FFFFFF;
+  --win-shadow-dark: #000000;
+  --win-shadow:      #808080;
+  --win-face:        #C0C0C0;
+  --win-3d-light:    #FFFFFF;
+  --win-3d-dark:     #808080;
+  --win-3d-darker:   #000000;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--win-desktop);
+  color: var(--win-black);
+  font-family: var(--font-mono), "Intel One Mono", "Courier New", monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  overflow-x: hidden;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Windows 97 Selection */
+::selection { 
+  background: var(--win-highlight); 
+  color: var(--win-highlight-text); 
+}
+
+/* Windows 97 Scrollbar */
+::-webkit-scrollbar { width: 16px; height: 16px; }
+::-webkit-scrollbar-track { 
+  background: var(--win-gray);
+  border-left: 1px solid var(--win-3d-light);
+  border-top: 1px solid var(--win-3d-light);
+}
+::-webkit-scrollbar-thumb { 
+  background: var(--win-gray);
+  border: 1px solid;
+  border-color: var(--win-3d-light) var(--win-3d-dark) var(--win-3d-dark) var(--win-3d-light);
+}
+::-webkit-scrollbar-button {
+  background: var(--win-gray);
+  border: 1px solid;
+  border-color: var(--win-3d-light) var(--win-3d-dark) var(--win-3d-dark) var(--win-3d-light);
+  height: 16px;
+  width: 16px;
+}
+
+/* ── Font utilities ─────────────────────────────────────── */
+.f-mono { font-family: var(--font-mono), "Intel One Mono", "Courier New", monospace; }
+
+/* ── Windows 97 UI Components ───────────────────────────── */
+
+/* Window Frame */
+.win-window {
+  background: var(--win-gray);
+  border: 1px solid;
+  border-color: var(--win-3d-light) var(--win-3d-dark) var(--win-3d-dark) var(--win-3d-light);
+  box-shadow: 1px 1px 0 var(--win-black);
+}
+
+/* Title Bar */
+.win-titlebar {
+  background: linear-gradient(90deg, var(--win-blue) 0%, #1084D0 100%);
+  color: var(--win-white);
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 11px;
+  user-select: none;
+  font-family: var(--font-mono), "Intel One Mono", "Courier New", monospace;
+}
+
+.win-titlebar.inactive {
+  background: linear-gradient(90deg, var(--win-gray-dark) 0%, var(--win-gray) 100%);
+  color: var(--win-gray-light);
+}
+
+/* Button - Raised */
+.win-button {
+  background: var(--win-gray);
+  border: 2px solid;
+  border-color: var(--win-3d-light) var(--win-3d-dark) var(--win-3d-dark) var(--win-3d-light);
+  padding: 4px 12px;
+  font-family: var(--font-mono), "Intel One Mono", "Courier New", monospace;
+  font-size: 11px;
+  cursor: pointer;
+  outline: none;
+  min-width: 75px;
+  text-align: center;
+}
+
+.win-button:active {
+  border-color: var(--win-3d-dark) var(--win-3d-light) var(--win-3d-light) var(--win-3d-dark);
+  padding: 5px 11px 3px 13px;
+}
+
+.win-button:focus {
+  outline: 1px dotted var(--win-black);
+  outline-offset: -4px;
+}
+
+/* Button - Flat (Toolbar) */
+.win-button-flat {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 3px 6px;
+  cursor: pointer;
+}
+
+.win-button-flat:hover {
+  border: 1px solid;
+  border-color: var(--win-3d-light) var(--win-3d-dark) var(--win-3d-dark) var(--win-3d-light);
+  background: var(--win-gray);
+}
+
+.win-button-flat:active {
+  border-color: var(--win-3d-dark) var(--win-3d-light) var(--win-3d-light) var(--win-3d-dark);
+}
+
+/* Inset Panel */
+.win-inset {
+  background: var(--win-white);
+  border: 2px solid;
+  border-color: var(--win-3d-dark) var(--win-3d-light) var(--win-3d-light) var(--win-3d-dark);
+  padding: 8px;
+}
+
+/* Outset Panel */
+.win-outset {
+  background: var(--win-gray);
+  border: 2px solid;
+  border-color: var(--win-3d-light) var(--win-3d-dark) var(--win-3d-dark) var(--win-3d-light);
+  padding: 8px;
+}
+
+/* Status Bar */
+.win-statusbar {
+  background: var(--win-gray);
+  border-top: 1px solid var(--win-3d-light);
+  padding: 2px 4px;
+  display: flex;
+  gap: 4px;
+  font-size: 11px;
+}
+
+.win-statusbar-field {
+  border: 1px solid;
+  border-color: var(--win-3d-dark) var(--win-3d-light) var(--win-3d-light) var(--win-3d-dark);
+  padding: 2px 4px;
+  flex: 1;
+}
+
+/* Desktop Icon */
+.win-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  cursor: pointer;
+  user-select: none;
+  width: 72px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.win-icon:hover .win-icon-label,
+.win-icon:focus .win-icon-label {
+  background: var(--win-highlight);
+  color: var(--win-highlight-text);
+  outline: 1px dotted var(--win-white);
+}
+
+.win-icon-image {
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+.win-icon-label {
+  color: var(--win-white);
+  font-size: 10px;
+  line-height: 1.2;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+  word-break: break-word;
+  padding: 1px 3px;
+  width: 72px;
+  text-align: center;
+}
+
+/* Menu Bar */
+.win-menubar {
+  background: var(--win-gray);
+  border-bottom: 1px solid var(--win-3d-light);
+  display: flex;
+  padding: 2px;
+  gap: 2px;
+}
+
+.win-menu-item {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.win-menu-item:hover {
+  background: var(--win-highlight);
+  color: var(--win-highlight-text);
+}
+
+/* Taskbar */
+.win-taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: var(--win-gray);
+  border-top: 2px solid var(--win-3d-light);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  gap: 2px;
+  z-index: 9999;
+}
+
+.win-start-button {
+  background: var(--win-gray);
+  border: 2px solid;
+  border-color: var(--win-3d-light) var(--win-3d-dark) var(--win-3d-dark) var(--win-3d-light);
+  padding: 2px 6px;
+  font-weight: bold;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+}
+
+.win-start-button:active {
+  border-color: var(--win-3d-dark) var(--win-3d-light) var(--win-3d-light) var(--win-3d-dark);
+  padding: 3px 5px 1px 7px;
+}
+
+.win-taskbar-divider {
+  width: 2px;
+  height: 24px;
+  border-left: 1px solid var(--win-3d-dark);
+  border-right: 1px solid var(--win-3d-light);
+}
+
+.win-clock {
+  border: 1px solid;
+  border-color: var(--win-3d-dark) var(--win-3d-light) var(--win-3d-light) var(--win-3d-dark);
+  padding: 2px 8px;
+  font-size: 11px;
+  margin-left: auto;
+}
+
+/* Tab Control */
+.win-tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: -2px;
+}
+
+.win-tab {
+  background: var(--win-gray);
+  border: 2px solid;
+  border-color: var(--win-3d-light) var(--win-3d-dark) transparent var(--win-3d-light);
+  padding: 4px 16px;
+  cursor: pointer;
+  position: relative;
+  top: 2px;
+}
+
+.win-tab.active {
+  background: var(--win-gray);
+  border-bottom-color: var(--win-gray);
+  top: 0;
+  padding-bottom: 6px;
+}
+
+/* Animations */
+@keyframes win-startup {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.win-startup {
+  animation: win-startup 0.2s ease-out;
+}
+
+@keyframes win-ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
 }
