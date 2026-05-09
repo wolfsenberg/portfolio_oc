@@ -26,6 +26,39 @@
   --win-3d-light:    #FFFFFF;
   --win-3d-dark:     #808080;
   --win-3d-darker:   #000000;
+
+  /* ThemeToggle button */
+  --border-strong:   #808080;
+  --accent:          #000080;
+  --bg-surface:      #C0C0C0;
+  --fg:              #000000;
+}
+
+/* ── Dark Mode ───────────────────────────────────────────── */
+.dark {
+  --win-desktop:     #1a1a2e;
+  --win-gray:        #2d2d2d;
+  --win-gray-dark:   #1a1a1a;
+  --win-gray-light:  #3a3a3a;
+  --win-white:       #1e1e1e;
+  --win-black:       #e0e0e0;
+  --win-blue:        #1a4a8a;
+  --win-blue-light:  #4488cc;
+  --win-teal:        #004a4a;
+  --win-highlight:   #1a4a8a;
+  --win-highlight-text: #ffffff;
+  --win-shadow-dark: #000000;
+  --win-shadow:      #111111;
+  --win-face:        #2d2d2d;
+  --win-3d-light:    #4a4a4a;
+  --win-3d-dark:     #111111;
+  --win-3d-darker:   #000000;
+
+  /* ThemeToggle button */
+  --border-strong:   #4a4a4a;
+  --accent:          #1a4a8a;
+  --bg-surface:      #2d2d2d;
+  --fg:              #e0e0e0;
 }
 
 /* ── Reset ──────────────────────────────────────────────── */

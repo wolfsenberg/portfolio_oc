@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
+const output = (process.env.NEXT_OUTPUT || "export") as "export" | "standalone";
+
 const nextConfig: NextConfig = {
-  output: "export",
+  output,
   trailingSlash: true,
-  assetPrefix: "https://storage.googleapis.com/geinel-portfolio",
+  // Set NEXT_PUBLIC_ASSET_PREFIX to your CDN URL (GCS bucket or CloudFront domain)
+  assetPrefix: process.env.NEXT_PUBLIC_ASSET_PREFIX || undefined,
   images: {
     unoptimized: true,
   },
