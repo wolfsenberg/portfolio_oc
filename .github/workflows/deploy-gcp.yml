@@ -1,9 +1,7 @@
 name: Deploy to GCP — Cloud Run
 
-# Triggers on every push to main, or manually via the Actions tab.
+# Trigger manually from the Actions tab when ready to deploy.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 # ── Required GitHub secrets / variables ──────────────────────────────────────
